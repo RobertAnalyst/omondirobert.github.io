@@ -394,20 +394,34 @@
 								</section>
 								
 								<script>
-									// Get all the collapsible buttons
+									// Insert gray horizontal line before contact section
+									window.addEventListener("DOMContentLoaded", function () {
+										var hr = document.createElement("hr");
+										hr.style.width = "100vw";
+										hr.style.border = "none";
+										hr.style.borderTop = "3px solid #ccc";
+										hr.style.margin = "1em 0";
+										hr.style.marginLeft = "calc(-32vw + 40%)"; // Align to full width
+								
+										var contactSection = document.querySelector(".split.contact");
+								
+										if (contactSection) {
+											contactSection.parentNode.insertBefore(hr, contactSection);
+										}
+									});
+								
+									// Collapsible buttons functionality
 									var coll = document.getElementsByClassName("collapsible");
 								
-									// Loop through each collapsible button
 									for (var i = 0; i < coll.length; i++) {
-										coll[i].addEventListener("click", function() {
-											// Toggle between hiding and showing the content
+										coll[i].addEventListener("click", function () {
 											var content = this.nextElementSibling;
 											if (content.style.display === "block") {
 												content.style.display = "none";
-												this.textContent = "Click here to read the entire article"; // Change the button text when collapsed
+												this.textContent = "Click here to read the entire article";
 											} else {
 												content.style.display = "block";
-												this.textContent = "Click here to collapse the article"; // Change the button text when expanded
+												this.textContent = "Click here to collapse the article";
 											}
 										});
 									}
